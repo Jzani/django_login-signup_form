@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 2s ease; /* Smooth transition effect */
+        }
+
+        .login-container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 2px solid #333; /* Border around the form */
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-container form input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .login-container form button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-container form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // Define the colors for the background
+        const colors = ["#FF5733", "#33FF57", "#5733FF", "#F0E68C", "#ADD8E6", "#FFB6C1"];
+        let currentIndex = 0;
+
+        function changeBackgroundColor() {
+            // Set the current background color
+            document.body.style.backgroundColor = colors[currentIndex];
+
+            // Move to the next color in the array
+            currentIndex = (currentIndex + 1) % colors.length;
+        }
+
+        // Change background color every 3 seconds
+        setInterval(changeBackgroundColor, 3000);
+    </script>
+</body>
+</html>

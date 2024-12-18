@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<style>
+    /* Page styling for background and transition */
+    body {
+        transition: background-color 2s ease-in-out; /* Smooth background color transition */
+    }
+
+    /* Container styling for the form */
+    .signup-container {
+        width: 350px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 3px solid rgba(0, 0, 0, 0.2); /* Border with transparency */
+        border-radius: 15px; /* Rounded corners */
+        background: rgba(255, 255, 255, 0.9); /* Glass-like background */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Smooth shadow */
+        backdrop-filter: blur(10px); /* Glass effect */
+    }
+
+    /* Title inside the form */
+    .signup-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    /* Form field styling */
+    .signup-container form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    /* Button styling */
+    .signup-container form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    /* Button hover effect */
+    .signup-container form button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Footer note */
+    .signup-container .footer-note {
+        text-align: center;
+        font-size: 12px;
+        margin-top: 10px;
+        color: #777;
+    }
+</style>
+
+<div class="signup-container">
+    <h2>Sign Up</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+    </form>
+    <div class="footer-note">
+        Already have an account? <a href="/login/">Login</a>
+    </div>
+</div>
+
+<script>
+    // Array of background colors
+    const colors = ["#FF5733", "#33FF57", "#5733FF", "#FFD700", "#00FFFF", "#FFB6C1"];
+    let currentIndex = 0;
+
+    // Function to change background color dynamically
+    function changeBackgroundColor() {
+        document.body.style.backgroundColor = colors[currentIndex];
+        currentIndex = (currentIndex + 1) % colors.length; // Loop through the colors
+    }
+
+    // Change the background color every 3 seconds
+    setInterval(changeBackgroundColor, 3000);
+</script>
+{% endblock %}
